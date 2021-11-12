@@ -1,0 +1,30 @@
+{
+  "name": "makeen",
+  "version": "0.0.1",
+  "description": "POC for makeen",
+  "main": "server.js",
+  "scripts": {
+    "build": "babel src -d dist --copy-files",
+    "dev": "yarn build --verbose --watch"
+  },
+  "author": "Asad Fareed",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.16.0",
+    "awilix": "^6.0.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "mongoose": "^6.0.12",
+    "mongoose-unique-validator": "^3.0.0",
+    "revalidator": "^0.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/cli": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-plugin-module-resolver": "^4.1.0"
+  }
+}
