@@ -43,6 +43,10 @@ class UserRepository {
         return await this.Users.findByIdAndUpdate(id, payload);
     }
 
+    async getUserCount(query = {}) {
+        return await this.Users.count(query);
+    }
+
 }
 
 module.exports = UserRepository;

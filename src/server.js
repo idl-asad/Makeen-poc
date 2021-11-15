@@ -7,6 +7,8 @@ const { container } = require('di-setup');
 const Db = container.resolve('db');
 const Jwt = container.resolve('jwt');
 const Handler = container.resolve('handler');
+const config = container.resolve('config');
+const userRepository = container.resolve('userRepository');
 
 const router = require('routes')
 
@@ -23,8 +25,17 @@ class Server {
         this.app.use(Handler.error);
 
         try {
+            console.log(userRepository);
             await Db.connect();
             console.log("Connected successfully to Makeen db!");
+
+            // migrating admin user
+            
+            const user = config.adminUser;
+            const userCount = await userRepository.getUserCount();
+            if (userCount < 1) {
+                await userRepository.create(user);
+            }
         } catch (e) {
            throw Error(`Unable to connect with makeen Database ${e}`);
         }

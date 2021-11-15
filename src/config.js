@@ -6,6 +6,13 @@ const config = {
     saltWorkFactor: 10,
     db: {
         connString: 'mongodb://admin:Password1@db/makeen?authSource=admin'
+    },
+    adminUser: {
+        "email": "globalAdmin@makeen.com",
+        "password": "Password1",
+        "username": "globalAdmin",
+        "firstName": "global",
+        "lastName": "admin"
     }
 };
 
