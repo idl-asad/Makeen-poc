@@ -9,6 +9,9 @@ const Jwt = container.resolve('jwt');
 const Handler = container.resolve('handler');
 const config = container.resolve('config');
 const userRepository = container.resolve('userRepository');
+const groupRepository = container.resolve('groupRepository');
+const roles = container.resolve('roles');
+
 
 const router = require('routes')
 
@@ -34,6 +37,10 @@ class Server {
             const user = config.adminUser;
             const userCount = await userRepository.getUserCount();
             if (userCount < 1) {
+                const roleId = await groupRepository.createRole({
+                    role: roles.GLOBALMANAGER
+                });
+                user['roles'] = roleId;
                 await userRepository.create(user);
             }
         } catch (e) {
